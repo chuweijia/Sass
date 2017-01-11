@@ -21,8 +21,8 @@ http://rubyinstaller.org/downloads/
 插件  
 * `Sass`  
 * `SASS Build`  
-
-查看`Tools-->Build System` 生成了 `SASS` 和 `SASS-Compressed`(压缩)两种编译模式  
+* `SublimeOnSaveBuild`将 ctrl + s && ctrl + b  --> ctrl + s  
+查看`Tools-->Build System` 生成了 `SASS` 和 `SASS-Compressed`(压缩)两种编译模式  
 `PackageResourceViewer` 快捷方式 `ctrl+shift+p` --> `open source` 可以打开 上述两个插件的配置文件`xx.sublime-build`  
 ![image](http://7xsk2q.com1.z0.glb.clouddn.com/sassPro-33.png)  
 可以自定义编译映射路径 编译`sass`快捷方式 `ctrl+s` 于是**挖坑**从这里开始..  
