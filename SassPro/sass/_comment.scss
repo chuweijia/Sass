@@ -1,0 +1,52 @@
+
+/* 热门评论组件 */
+.comment-wrap{
+  padding-bottom: ptr(106);}
+.comment-list{
+  border-bottom: none;
+  li{
+    position: relative;
+    padding: .12rem 0 .12rem ptr(120);
+    border-bottom: 1px solid #dee2eb;
+    .img-wrap{
+      left: 0;
+      top: .12rem;
+      position: absolute;}
+  }
+  .describe{
+    padding-top: 0.05rem;
+    @include fontStyle(ptr(34),ptr(50))}
+  .name,.time{
+    float: none;
+    display: block;
+    margin-top: 0;
+    line-height: .22rem;}
+  .action-box{
+    height: .3rem;
+    line-height: .3rem;}
+  .reply-mod{
+    margin: 0.07rem 0;
+    padding: ptr(10) ptr(26) ptr(15);
+    background: #f2f3f6;
+    .floor{@include fontStyle(ptr(24),.18rem,#a7acbb)}
+    .reply-info{
+      padding-top: 0.07rem;
+      @include fontStyle(ptr(32),.22rem,#a7acbb)}}
+  .insert-img{
+    padding: .1rem 0 0.07rem;
+    img{
+      max-width: 100%;
+      vertical-align: top;}}
+}
+.action-box .like{
+  float: left;
+  padding-left: .22rem;
+  background-position: 0 ptr(-41);}
+.action-box .like-in{
+  background-position: 0 ptr(15);}
+.action-box .enter{
+  float: left;
+  @include wh(ptr(30));
+  margin: 0.08rem 0 0 .25rem;
+  background-position: 0 ptr(-116);
+}

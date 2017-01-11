@@ -1,0 +1,60 @@
+/* flex组件 */
+@mixin prefixDis(){
+	display: box;  
+	display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+	display: -moz-box; /* 老版本语法: Firefox (buggy) */
+	display: -ms-flexbox; /* 混合版本语法: IE 10 */
+	display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+	display: flex; 
+	
+}
+@mixin prefixItem($attr,$position,$Android){
+	$a:chu;//这个值默认不能为空...
+	@if $attr == 'justify-content'{
+		$a:pack;
+	}
+	@else if $attr == 'align-items'{
+		$a:align;
+	}
+	@if $Android == 'Android' { //函数生成的有问题 看下注释
+		//#{$attr}:$position;
+		box-#{$a} : $position;
+		-webkit-box-#{$a} : $position;
+		//-webkit-#{$attr}:$position;
+	}
+	@else if $Android == 'newAndroid'{
+		#{$attr}:$position ;
+		// box-#{$a} : $position ;
+		// -webkit-box-#{$a} : $position ;
+		-webkit-#{$attr}:$position ;
+	}	
+}
+
+//常用三种布局
+    //justify-content: flex-start | flex-end | center | space-between | space-around;
+    //box-pack:start(defalut) | end | center | justify
+    //align-items:flex-start | flex-end | center | baseline | stretch
+%flex-center{
+	@include prefixDis();
+	@include prefixItem(align-items,center,Android); //Android 4.3-  box-align:start | end | center | baseline | stretch(default)
+	@include prefixItem(justify-content,center,newAndroid);
+	box-pack: center;
+	-webkit-box-pack: center;
+
+}
+%flex-between{ //三种header 公用flex-between样式
+	@include prefixDis();
+	@include prefixItem(justify-content,justify,Android); 
+	@include prefixItem(justify-content,space-between,newAndroid);  //Android 4.3-  box-pack:start(defalut) | end | center | justify
+	@include prefixItem(align-items,center,newAndroid); 
+}
+%flex-end{
+	@include prefixDis();
+	@include prefixItem(justify-content,end,Android); //Android 4.3- 
+	@include prefixItem(justify-content,flex-end,newAndroid);
+	 
+}
+
+
+
+

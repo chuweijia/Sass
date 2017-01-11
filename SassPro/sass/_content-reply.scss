@@ -1,0 +1,75 @@
+//@import "_flex";
+//@import "_common";
+/* content-reply组件 */
+.reply {
+    @include daynight(border-color, gray, g3);
+    @include daynight(background-color, gray, g6);
+    li {
+        display: block;
+        padding: .1rem 0 .1rem 0;
+        padding-bottom: 0; //修正加大点击区域
+        &:not(:first-child) {
+            @include daynight(color, gray, g3);
+            @include border(top);
+        }
+        .reply-content {
+            word-wrap: break-word;
+            padding-left:.58rem;
+            .reply-userContent{ //目标为回复的上部
+                img.inimg,img.outimg{//图片
+                    @extend %imgHack;
+                    @each $k,$v in $imgSize{
+                        @include imgSize(#{$k});
+                    }
+                }
+                .artical_img_txt{//图注
+                    @extend %imgNote;
+                }
+                overflow: hidden;
+                @each $k, $v in $fontSizeTheme {
+                    @include fontSizeTheme(#{$k}); //字体大小切换
+                }
+                @include daynight(color, blue, b2);
+            }
+            .insert-img img{ //回复区的图片 无大小切换,帖子详情 无.insert-img类
+                @extend %imgHack;
+                max-width: 100%;
+                width: 100%;
+                height: auto;
+            }
+            .reply-re-content {
+                @include font((fz:.17, lh:.28));
+                @include daynight(background-color, gray, g2);
+                padding: 0.07rem .12rem;
+                > div { //reply-re的文字颜色 加大权重覆盖
+                    @include daynight(color, gray, g5);
+                    overflow: hidden;
+                    @extend %imgSize;
+                }
+            }
+            .reply-time { //时间脚注
+                @extend %flex-end;
+                @include font((fz:.12));
+                @include daynight(color, gray, g5);
+                margin: .15rem 0;
+                margin-bottom: 0; //修正加大点击区域
+            }
+
+        }
+    }
+
+}
+.reply-content{
+    word-break: break-all;
+    a{
+        @include daynight(color,blue,b1); 
+    }
+}
+.ha{
+    color:red;
+}
+.reply-re-content{  //放进去写 层级嵌套过多导致+无效..
+    &+&{
+        margin-top:.1rem;
+    }
+}

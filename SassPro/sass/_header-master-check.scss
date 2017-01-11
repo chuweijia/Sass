@@ -1,0 +1,83 @@
+//@import "_common";
+//@import "_flex";
+/* header-master-title组件 */
+.check{
+	@include font((fz:.15));
+	@extend %flex-between;
+	.check-num{
+		@extend %flex-between;
+		@include daynight(color,gray,g5);
+		// >div{
+		// 	display:inline-block;
+		// 	&:first-child{//看1000 回20
+		// 		margin-right: .3rem;
+		// 	}
+		// 	>span{//看 1000
+		// 		
+		// 		&:first-child{//眼睛图标
+		// 			margin-right: 0.06rem;
+		// 		}
+		// 	}
+		// }
+		>div{
+			display:inline-block;
+			&:first-child{
+				margin-right: .3rem;
+			}
+			>span{
+				&:first-child{
+					display:inline-block;
+					vertical-align:top;
+					height:.15rem;//为了对齐
+					background-repeat:no-repeat;
+					margin:1px 0.06rem 0 0;
+				}
+				&.check-see{
+					@include daynight(background-image, image, see);
+				}
+				&.check-reply{
+					@include daynight(background-image, image, reply);
+				}
+			}
+			span.check-see{				
+				background-size: .17rem auto;
+				width:.17rem;
+			}
+			span.check-reply{
+				background-size: .13rem auto;
+				min-width:13px;//小于这个值图会不全
+				width:.13rem;	
+			} 
+		} 
+	}
+	.check-forum{
+		position:relative;
+		@include daynight(color,blue,b1);
+
+		height: .25rem;
+        line-height: .25rem;//加大点击区域
+        
+		span.forumName{
+			margin-right:.15rem;
+			display:inline-block;
+			max-width: 1.2rem;
+			white-space:nowrap; 
+			text-overflow:ellipsis; 
+			overflow:hidden;
+
+		}
+		span.forumIcon{
+			position: absolute;
+		    bottom: 0.06rem;
+		    right: 0;
+			width: 0.09rem;
+			height: .15rem;
+			display: inline-block;
+			background-image: url(../images/forum.png);
+			background-repeat: no-repeat;
+			background-size: 0.08rem auto;
+			//vertical-align: 0.05rem; 
+			//修复安卓bug（由于前面兄弟overflow：hidden引起的 但是苹果并没有bug so 采用绝对定位兼容 ） 
+		}
+	}
+}

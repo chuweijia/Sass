@@ -1,0 +1,48 @@
+//@import "_tag";
+/* header-master-title组件 */
+.title{
+    .master-title{
+        @include font((fz:.21,lh:.26));
+        @include daynight(color,blue,b2);
+        // &.essence{
+        //     &:after{
+        //         content:attr(data-title);
+        //         display: inline-block;
+        //         height: .17rem;
+        //         margin-left: 0.085rem;
+        //         padding: 0.01rem 0.04rem;
+        //         font-size: .12rem;
+        //         line-height: .16rem;
+        //         text-align: center;
+        //         border: 1px solid;
+        //         @include daynight(border-color,red,r1); 
+        //         @include daynight(color,red,r1); 
+        //         border-radius: 0.07rem;
+        //         letter-spacing: 0.01rem;
+        //         text-indent: 0.01rem;
+        //     }
+        // }
+    }
+    em{
+        @extend %tag;
+        vertical-align: top;
+        margin-top: 0.03rem;
+        &.disnone{
+            display:none;
+        }
+        &.iconRed{
+            @include daynight(border-color,red,r1); 
+            @include daynight(color,red,r1); 
+        }
+        &.iconBlue{
+            @include daynight(border-color,blue,b1); 
+            @include daynight(color,blue,b1);  
+        }
+        &.iconGray{
+            @include daynight(border-color,gray,g5); 
+            @include daynight(color,gray,g5); 
+        }
+    }
+    
+
+}

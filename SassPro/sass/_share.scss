@@ -1,0 +1,98 @@
+/* share组件 */
+//@import "_flex";
+//@import "_common";
+// 分享的布局
+.master-share{
+	@extend %flex-center;
+	p{
+		display:inline-block;
+		font-size:.12rem;//必须放这里 不然行高会继承html
+		//margin-right:0;
+		a{
+			@include background((pz:50% 50%));
+			@include border();
+			border-radius: 50%;
+			@include daynight(border-color,gray,g3);
+			display: inline-block;
+			width: .56rem;
+			height: .56rem;
+			@include font((lh:bottom));//背景图也会这样啊..
+			@include background((sz:auto .25rem));
+
+		}
+		span{
+			display: block;
+			@include daynight(color,blue,b2);
+			text-align:center;
+			margin-top:0.09rem;
+		}
+	}
+	>p:not(:last-child){
+		margin-right:.14rem;
+	}
+}
+
+.default{//默认样式
+	@include daynight(background-color,gray,g6);
+}
+.selected{//被选中后的样式
+	@include daynight(background-color,gray,g2);
+}
+$icons: (
+  wechat: wechat,
+  sina: sina,
+  thumb: thumb,
+  friend:friend
+);
+
+@each $name, $value in $icons {
+	.#{$name}{
+		// @include background((img:#{$value}));
+		@include daynight(background-image, image, #{$name});
+	  	@if $name == thumb{//暂时加这一个
+	  		&.thumbed{
+	  			// @include background((img:thumbed));
+	  			@include daynight(background-image, image, thumbed);
+			}
+	  	}
+	}
+}
+@-webkit-keyframes thumbed {
+  	0% { 
+  		opacity: 1;
+  		top:0.05rem; 
+  		left:.15rem;
+  	}
+  	100% { 
+  	    opacity: 0;
+  	    top:-0.1rem;  
+  	    left:.15rem;  
+  	}
+}
+@keyframes thumbed {
+  	0% { 
+  		opacity: 1;
+  		top:0.05rem; 
+  		left:.15rem;
+  	}
+  	100% { 
+  	    opacity: 0;
+  	    top:-0.1rem;  
+  	    left:.15rem;
+  	}
+}
+.master-share i{
+	display:none;
+}
+.thumbed-plus{
+	@extend .thumbed;
+	position:relative;
+	i{  //安卓4.3对伪类支持性不好
+		display: inline-block; 
+		position:absolute;
+	    @include daynight(color,blue,b2);
+	    animation: thumbed 0.8s linear 0s 1 normal forwards;
+	    -webkit-animation: thumbed 0.8s linear 0s 1 normal forwards;
+    }
+}
+

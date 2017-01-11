@@ -1,0 +1,62 @@
+// @import "_share";
+// @import "_advert";
+/* content-master组件 */
+.master{
+    @include daynight(background-color, gray, g6);
+    @include daynight(color,gray,g3);
+
+
+
+    // header{//属于头部内容
+    //     @include daynight(color,gray,g3);
+    //     >div{
+    //         padding-top: 0.05rem;
+    //         &:first-child{//修正图..啰嗦
+    //             padding-top: .1rem;
+    //         }
+    //         &:last-child{
+    //             margin:0 0 0.06rem 0;
+    //             a{  //加大点击区域(max)
+    //                 height: .25rem;
+    //                 line-height: .25rem;
+    //             }
+    //         }
+    //     }
+
+    // }
+
+    
+    .master-content{
+        word-break:break-all;
+        a{  //后端加的节点 是用户发的链接
+            @include daynight(color,blue,b1); 
+        }
+        @each $k,$v in $fontSizeTheme{
+            @include fontSizeTheme(#{$k});//字体大小切换
+        }
+        @include daynight(color,blue,b2);
+        overflow: hidden;
+        >div:first-child{  //文章内容
+            //@include font((tx:justify));//左右对齐显示
+        }
+        img.inimg,img.outimg{
+            @extend %imgHack;
+            @each $k,$v in $imgSize{
+                @include imgSize(#{$k});
+            }
+        }
+        img.inimg{
+            width: 100%;
+        }
+        .artical_img_txt{//图注
+            @extend %imgNote;
+        }
+    }
+    .reply-time{//时间脚注
+            @extend %flex-end; 
+            @include font((fz:.12));
+            @include daynight(color,gray,g5);
+            margin: .15rem 0;
+            margin-bottom:0;//修正加大点击区域
+    }
+}

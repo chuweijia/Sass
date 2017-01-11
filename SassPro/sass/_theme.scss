@@ -1,0 +1,123 @@
+$themes: (
+  theme1: day,
+  theme2: night
+);
+$config: (
+  theme1: (
+  	gray:(
+  		g1:#ffffff,//$level $em
+  		g2:#f2f3f6,//reply(bg-color)
+  		g3:#dee2eb,//$line
+  		g4:#e0e3ec,//这两种颜色能合并不..
+  		g5:#a7acbb,//$gray
+  		g6:#ffffff,//border-level $background
+      g7:#c2c6d3,//more
+		  g8:#dde0e6,//询底价btn
+      lazy:#f2f3f6
+  	),
+  	blue:(
+  		b1:#1bacff,//$blue
+  		b2:#354056,//$black
+		  b3:#37d890,
+      b4:#0683C1//a:active
+  	),
+    yellow:(
+      y1:#fcdd9b
+    ),
+    red:(
+      r1:#ff5252,
+	  r2:#fd8050
+    ),
+    image:(
+      preload:preload1,
+	    newsload:newsload1,
+      reload:reload1,
+      addConcern:addConcern1,
+      tickConcern:tickConcern1,
+      eachConcern:eachConcern1,
+      cancelConcern:cancelConcern1,
+      thumb:thumbDay,
+      thumbed:thumbedDay,
+      wechat:wechatDay,
+      sina:sinaDay,
+      friend:friendDay,
+      authority:authorityDay,
+		  tel:telDay,
+      like:likeDay,
+      likein:likeinDay,
+      cmt:cmtDay,
+      see:seeDay,
+      reply:replyDay
+    )
+  ),
+  theme2: (
+  	gray:(
+		g1:#d5d9e1,
+  		g2:#212732,
+  		g3:#596a89,
+  		g4:#5a6a89,
+  		g5:#8996b2,
+  		g6:#2a3342,
+      g7:#797a81,
+		  g8:#4e5560,
+      lazy:#212732
+  	),
+  	blue:(
+  		b1:#2896f7,
+  		b2:#a8b9d9,
+  		b3:#2ac697,
+      b4:#1B77C9
+  	),
+    yellow:(
+      y1:#92773d
+    ),
+    red:(
+      r1:#ec4141,
+		  r2:#f57342
+    ),
+    image:(
+      preload:preload2,
+	    newsload:newsload2,
+      reload:reload2,
+      addConcern:addConcern2,
+      tickConcern:tickConcern2,
+      eachConcern:eachConcern2,
+      cancelConcern:cancelConcern2,
+      thumb:thumbNight,
+      thumbed:thumbedNight,
+      wechat:wechatNight,
+      sina:sinaNight,
+      friend:friendNight,
+      authority:authorityNight,
+		  tel:telNight,
+      like:likeNight,
+      likein:likeinNight,
+      cmt:cmtNight,
+      see:seeNight,
+      reply:replyNight
+    )
+  )
+);
+@function setStyle($map, $object, $group,$color) { //一个最直接的maps.obj1
+  @if map-has-key($map, $object) {
+    @return map-get(map-get(map-get($map, $object), $group),$color);
+  }
+ 
+  @return null;
+}
+
+@mixin daynight($attr,$group,$color){
+	@each $key, $value in $themes {
+		@if map-has-key($config, $key) { 
+			.#{$value} & { //经证明 此写法需要加载html上有效
+		    $attrValue:setStyle($config, $key, $group, $color);
+        @if $group == image{
+          #{$attr}: url(../images/#{$attrValue}.png);
+        }
+        @else{
+          #{$attr}: $attrValue;
+        }
+			}	
+		} 
+	}
+}

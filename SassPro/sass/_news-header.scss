@@ -1,0 +1,42 @@
+/* news-header组件 */
+@import "_header-avatar";
+@import "_header-master-title";
+
+//@import "_flex";
+@import "_header-reply-re";
+.master{
+	.title{
+		padding-top: .12rem;
+	}
+	.news-avatar{ 
+		padding: .14rem 0;
+		@include border(bottom);
+		@include daynight(border-color,gray,g3);
+	}
+	.master-name{ // master区的头注
+		em{
+			@include daynight(color,blue,b1);
+			@include daynight(border-color,blue,b1);
+		}
+	}
+}
+.news-check{
+	@extend %flex-between;
+	@include font((fz:.15));
+	@include daynight(color,gray,g5);
+	padding: .12rem 0 .14rem 0;
+	@include border(bottom);
+	@include daynight(border-color,gray,g3);
+	.news-check-name{
+		@extend %flex-between;
+		i{
+			margin-right: 0.04rem;
+		    margin-left: -0.02rem;
+		}
+		span.editor{
+			max-width: 1.8rem;
+			display:inline-block;
+			@extend %txtHide;
+		}
+	}
+}

@@ -1,0 +1,34 @@
+/* 促销详情hot-wrap组件 */
+.hot-wrap {
+  @extend %flex-between;
+  border: 1px solid;
+  @include daynight(border-color,gray,g3);
+  @include pd(.07rem 0 .08rem .08rem);
+  position: relative;
+  margin-top: .14rem;
+  .img-wrap {
+    @include wht(.55rem, .55rem);
+    img {
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+  .name{
+    @include line-ht(.28rem);
+    @include ft-size(.17rem);
+    width: 2.75rem;
+  }
+  .hot{
+    @include wht(.33rem,.2rem);
+    border: 1px solid;
+    @include daynight(border-color,gray,g5);
+    @include daynight(color,gray,g5);
+    @include ft-size(.12rem);
+    @include line-ht(.2rem);
+    border-radius: .04rem;
+    text-align: center;
+    position: absolute;
+    right:.08rem;
+    bottom:.08rem;
+  }
+}

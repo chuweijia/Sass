@@ -1,0 +1,9 @@
+//@import "_common";
+/* lazy组件 */
+.lazy{
+	display:block;
+	@include daynight(background-color , gray, lazy);
+}
+.lazy.loaded{
+	background-color: transparent;
+}

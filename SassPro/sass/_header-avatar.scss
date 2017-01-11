@@ -1,0 +1,99 @@
+//@import "_flex";
+//@import "_level";
+//@import "_tag";
+//@import "_debris";这个本就没用吧
+/* header-avatar组件 头像+(楼层|加关注|空) */
+.avatar{
+    @extend %flex-between;
+    .avatar-photo {//头像+(文字+时间)
+            @extend %flex-between;
+            .avatar-name { //--> (文字+时间)
+                margin-left: .12rem;
+                a {//-->文字
+                    display: block;
+                    height: .36rem;
+                    padding-top: 0;
+                    @include font((fz:.18, lh:.35));
+                    @include daynight(color, blue, b2);
+                    &.yiren-name{//yiren缺少<span>节点
+                        @extend %txtHide;
+                        max-width:2.8rem;
+                    }
+                    em{
+                        @extend %tag;
+                        vertical-align: top; 
+                        margin-top: 0.05rem;
+                    }
+                }
+                
+                p {//-->时间
+                    height: .22rem;
+                    @include font((fz:.12, lh:.12));
+                    @include daynight(color, gray, g5);
+                }
+            }
+            .master-name{//-->文字
+                .txt{
+                    display: inline-block;
+                    max-width: 2.2rem;
+                    @extend %txtHide;
+                }
+            }
+            .master-time{//-->时间
+                margin:0;//???
+            }
+    }
+    .avatar-floor{//头像区右侧-楼层
+        @include font((fz:.15));
+        @include daynight(color,gray,g5);
+        margin-bottom: .26rem; 
+    }
+    .avatar-concern{//头像区右侧-关注按钮
+            display:block; //修复安卓bug 
+            @include font((fz:.15, lh:.32, tx:center));
+            border-radius: 0.05rem;
+            width: .7rem;
+            height: .32rem;
+            $concern-type: (//defaultType-style
+                addConcern: concern-style2,
+                cancelConcern:concern-style2,
+                tickConcern:concern-style2,
+                eachConcern:concern-style2
+            );
+            @each $name, $value in $concern-type {
+                &.#{$name} {
+                    @if $value == concern-style1 {
+                        //@extend %concern-style1; 
+                        @include daynight(color, gray, g1);
+                        @include daynight(background-color, blue, b1);
+                    } @else if $value == concern-style2 {
+                        @include daynight(color, blue, b1);
+                        @include daynight(border-color, gray, g3);
+                        @include daynight(background-color, gray, g6);
+                        @include border();
+                    }
+                    span{
+                        display:inline-block;
+                        height:.32rem;
+                        @include font((fz:.15,lh:.34));
+                        
+                        &:before{
+                            @if $name == addConcern{
+                                content: "";
+                            }
+                            display: inline-block;
+                            width: .12rem;
+                            height: .12rem;
+
+                            @include daynight(background-image, image, #{$name});
+                            @include background((sz:contain));
+                            @include background((pz:center));
+                            vertical-align: top;
+                            margin: 0.1rem 0.01rem 0 0;
+
+                        }
+                    }      
+                }
+            }   
+    }
+}

@@ -1,0 +1,55 @@
+//@import "_flex";
+/* footer-more组件 */
+@import "_more";
+
+.master-operate {
+    position:relative;
+    margin-top: 0;
+    height: .42rem;
+    line-height: .425rem;
+    @include font((fz:.15));
+        .score{
+            display: inline-block;
+            height: .2rem;
+            @include font((lh:.2));
+            padding: 0 0.03rem;
+            @include border();
+            @include daynight(color, gray, g5);
+            @include daynight(border-color, gray, g5);
+            border-radius: 0.05rem;
+        }
+        .option{
+            display: inline-block;
+            height:100%;
+            float:right;
+            a{
+                @include daynight(color,blue,b1);           
+                display: inline-block;
+                height: 100%;
+                &.btn-reply{
+                    padding-right:.13rem;
+                    &:active{
+                        @include daynight(color,blue,b4);
+                    }
+                } 
+                &.btn-more{
+                    padding-left:.13rem;
+                    &:active{
+                        @include daynight(color,blue,b4);
+                    }
+                } 
+            }
+            .line-col{
+                @include daynight(color,blue,b1);
+                @include border(left); 
+                @include font((fz:0,vl:-0.02rem));
+                padding-top:.16rem;
+                margin-top: .14rem;
+                height:0;
+
+            }
+         }
+}
+
+
+

@@ -1,0 +1,103 @@
+// @import "_common";
+// @import "_flex";
+/* market-content组件 */
+.content{
+        @include daynight(color,blue,b2);
+        // &.load { //初始加载 当加载完毕时
+        //     height: 6.67rem;
+        //     @include daynight(background-image, image, preload);
+        //     background-color: transparent;//为了覆盖掉原同色的背景 变为背景透明
+        //     @include background((sz:100% auto, pz:50% .1rem)); //因为avatar的margin-top:10px
+        //     > section {
+        //         display: none;
+        //     }
+        //     > div {
+        //         display: none;
+        //     }
+
+        // }
+        &.offline {
+          @include daynight(background-color, gray, g2);
+          height: 100vh; 
+          > section {
+              &:not(:last-child) {
+                  display: none;
+              }
+              &.reload{
+                  //display:none;
+                  @extend %flex-center; 
+                  padding-top: 1.45rem;
+                  div{
+                      a{
+                          //inline-block会有下边距(可用vertical-align将图片下沉)且无法居中(margin:0 auto;不支持)
+                          //flex-center时候会自动将多子元素统一设置inline-block后抹成一行居中..
+                          display:block;
+                          margin:0 auto .18rem auto;
+                          width:.9rem;
+                          height:.9rem;
+                          @include daynight(background-image,image,reload);
+                          @include background((sz:.9rem .9rem)); 
+                                   
+                      }
+                      p{
+                          @include font((fz:.15));
+                          @include daynight(color,gray,g5);
+                      }
+                  }
+              }
+          }
+        }
+        .master{
+            padding:0 0.15rem;
+            margin-bottom:.1rem;
+            @include daynight(background-color, gray, g6);
+            //@include daynight(color,gray,g3);
+            //@include border(bottom);
+            header{
+                @include daynight(border-color,gray,g3);
+                @include border(bottom);
+                >div{
+                    padding-top: 0.05rem;
+                    &:first-child{//修正图..啰嗦
+                        padding-top: .1rem;
+                    }
+                    &:last-child{
+                        margin:0 0 0.06rem 0;
+                        a{  //加大点击区域(max)
+                            height: .25rem;
+                            line-height: .25rem;
+                        }
+                    }
+                }
+
+            }
+            .master-title{
+              @include pd(.09rem 0 0 0);
+            }
+            .master-content{
+                p{
+                    @include pd(.1rem 0 0);
+                }
+                @each $k,$v in $fontSizeTheme{
+                    @include fontSizeTheme(#{$k});//字体大小切换
+                }
+                @include daynight(color,blue,b2);
+                overflow: hidden;
+                margin: 0.085rem 0 .135rem 0;
+                >div:first-child{  //文章内容
+                    //@include font((tx:justify));//左右对齐显示
+                }
+                img{ //发帖图 讲发帖回帖部分分开处理
+                    @extend %imgHack;
+                    @each $k,$v in $imgSize{
+                        @include imgSize(#{$k});
+                    }
+                }
+                .artical_img_txt{
+                    @extend %imgNote;
+                }
+            }
+        }
+}
+.active{background-color: #0683c1 !important;} //询底价按钮
+.night .active{background-color: #1b77c9 !important;}

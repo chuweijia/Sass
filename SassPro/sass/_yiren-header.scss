@@ -1,0 +1,34 @@
+/* yiren-header组件 */
+@import "_header-master-title";
+@import "_header-master-check";
+@import "_header-avatar";
+
+@import "_header-reply-re";
+.master{
+	.avatar{ // master区的头部距离
+    	padding: .12rem 0;
+		@include border(bottom);
+		.master-name{ // master区的头注
+			display: inline-block;
+	        max-width: 2.2rem;
+	        @extend %txtHide;
+			em{
+				@include daynight(color,blue,b1);
+				@include daynight(border-color,blue,b1);
+			}
+		}
+		.master-time{
+			margin:0;
+		}
+	}
+	.title{
+    	margin-top: .12rem ;
+    	padding-top:0;
+    	.master-title{
+    		margin:0;
+    	}
+	}
+	.check{
+    	margin: .1rem 0;
+	}
+}

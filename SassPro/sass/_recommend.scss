@@ -1,0 +1,52 @@
+//@import "_common";
+//@import "_tag";
+//@import "_flex";
+/* 精彩推荐recommend组件 */
+.recommend-mode{
+    .title{
+        margin:.15rem 0 0 -.15rem;
+        margin-top:0;
+        padding-left: .15rem;
+        @include font((fz:.18,lh:.26));
+        @include daynight(color,blue,b1);
+        border-left: 2px solid #1bacff;
+    }
+    .recommend-list{
+        @extend %flex-between;
+
+        padding: .15rem 0;
+        &:not(:last-child){
+            border-bottom: 1px solid;
+            @include daynight(border-color,gray,g3);
+        }   
+
+        .left{
+            flex: 1;
+            width: 2.36rem;
+            .tag{
+              @extend %tag;
+              @include daynight(color,gray,g5);
+              margin-left: 0;
+            }
+            .name{
+                margin: -.05rem .15rem .06rem 0;
+                @include font((fz:.18,lh:.27));
+                @include daynight(color,blue,b2);
+                @extend %txtHide2;//两行文字隐藏加省略号
+            }
+            .time{
+                float: none;
+                margin-top: 0.05rem;
+                font-size:.12rem;
+                @include daynight(color,gray,g5);
+            }
+        }
+        .right{
+            img{
+                display: block;
+                width: 1.09rem;
+                height: .73rem;
+            }
+        }
+    }
+}

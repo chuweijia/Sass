@@ -1,0 +1,31 @@
+/* 促销详情market-details-common组件 */
+@mixin wht($width,$height){
+  width:$width;
+  height: $height;
+}
+@mixin bg-size($width){
+  background-size: $width auto;
+}
+@mixin pd($pd){
+  padding: $pd;
+}
+@mixin bd($normal:#dee2eb){
+  border:1px solid $normal;
+}
+@mixin bd-bottom($normal:#dee2eb){
+  border-bottom:1px solid $normal;
+}
+@mixin bg-png($bg){
+  background: url(../images/#{$bg}.png) 0 0 no-repeat;
+}
+@mixin ft-size($size){
+  font-size: $size;
+}
+@mixin line-ht($line-ht){
+  line-height: $line-ht;
+}
+%hidden{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

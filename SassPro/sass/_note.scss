@@ -1,0 +1,223 @@
+//@import "_flex";
+//@import "_common";
+/* note组件 */
+@-webkit-keyframes progressAnimate {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.note { //这个要控制显隐吗
+    @include font((fz:.17));
+    %able {
+        @include daynight(color, gray, g1);
+        @include daynight(background-color, blue, b1);
+    }
+    %disable {
+        @include daynight(color, gray, g1);
+        @include daynight(background-color, gray, g7);
+    }
+    .note-table {
+        .head {
+            @extend %able;
+            @include font((lh:.17));
+            padding-top: .15rem;
+            padding-bottom: .15rem;
+            p {
+                display: inline-block;
+                @include font((lh:.17, tx:center));
+                &:first-child {
+                    width: 50%;
+                }
+                &:last-child {
+                    width: 49%;
+                }
+            }
+            .note-line {
+                @include border(left);
+                // padding-top: .25rem;  这特么距离？继承了父类的fz:.17
+                @include daynight(color, gray, g1);
+            }
+        }
+        .body {
+            @include border();
+            @include daynight(border-color, gray, g3);
+            > li { //公共部分
+                @include daynight(color, gray, g5);
+                @include daynight(background-color, gray, g6);
+                label {
+                    //@extend %flex-between;
+                    padding: .19rem .14rem;
+                    display:block;
+                    > span {
+                        @include daynight(color, blue, b2);
+                    }
+                    > p {
+                        display: inline-block;
+                    }
+                    .vote-check {
+                        display: block;
+                        width: .3rem;
+                        text-align: right;
+                    }
+                }
+                &:not(:last-child) {
+                    @include border(bottom);
+                    @include daynight(border-color, gray, g3);
+                }
+
+            }
+            &.activity { //活动贴
+                li {
+                    &.clearfix{
+                        overflow:auto;
+                    }
+                    box-sizing: border-box;
+                    padding: .19rem .14rem;
+                    span {
+                        // margin-right: .15rem;
+                        display: inline-block; //保持同行
+                        float:left;
+                        @include daynight(color, blue, b2);
+                    }
+                    p {
+                        display: inline-block; //保持同行
+                        float:left;
+                        max-width:2.3rem;
+                    }
+                }
+            }
+            &.vote { //投票贴
+                li {
+                    padding: 0;
+                    border-top-width: 0;
+                    position: relative;
+                    label {
+                        position: relative;
+                        z-index: 1;
+                        span{
+                            display: inline-block;
+                            word-break: break-all;
+                            &.vote-limit{
+                                max-width: calc(100% - .5rem);//原4
+                            }
+                            &.vote-nolimit{
+                                max-width: calc(100% - 1rem); 
+                            }
+                            &.voted-limit{
+                                max-width: calc(100% - .6rem);
+                            }
+                        }
+                        div {
+                            float:right;
+                            em{
+                                margin-left:.16rem;
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin: 0;
+                            }
+                            input {
+                                display: inline-block;
+                                vertical-align: middle;
+                                position: relative;
+                                -webkit-appearance: none;
+                                cursor: pointer;
+                                margin-left:.16rem;
+                                border-radius: 50%;
+                                @include border();
+                                @include daynight(background-color, gray, g6);
+                                @include daynight(border-color, blue, b1);
+                                width: .2rem;
+                                height: .2rem;
+                                outline: none;
+                                &:after {
+                                    opacity: 1;
+                                    content: '';
+                                    position: absolute;
+                                    width: 0.09rem;
+                                    height: 0.05rem;
+                                    top: 0.04rem;
+                                    left: 0.04rem;
+                                    @include daynight(border-color, gray, g6);
+                                    @include border(all, 0.02rem);
+
+                                    border-top: none;
+                                    border-right: none;
+                                    -webkit-transform: rotate(-45deg);
+                                    -moz-transform: rotate(-45deg);
+                                    -o-transform: rotate(-45deg);
+                                    -ms-transform: rotate(-45deg);
+                                    transform: rotate(-45deg);
+                                }
+                            }
+                            input[type=checkbox]:checked, input[type=radio]:checked { //浏览器默认有个蓝框环绕 手机正常
+                                @include daynight(background-color, blue, b1);
+                                &:after {
+                                    @include daynight(border-color, gray, g1);
+                                }
+                            }
+                        }
+                    }
+                    .rate{//投票结束
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 0;
+                        height: 100%;
+                        p{
+                            height: 100%;
+                            @include daynight(background-color, gray, g2);
+                            &.rate-animate {
+                                animation-name: progressAnimate;
+                                animation-duration: 1s;
+                                animation-fill-mode: forwards;
+                                -webkit-animation-name: progressAnimate;
+                                -webkit-animation-duration: 1s;
+                                -webkit-animation-fill-mode: forwards;
+                            }
+                            &.rate-my {
+                                @include daynight(background-color, yellow, y1);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        .foot {
+            margin: .15rem 0 .15rem 0;
+            a {
+                @extend %able;
+                border-radius: 0.07rem;
+                display: inline-block;
+                width: 100%;
+                @include font((tx:center, lh:.44));
+                &.disable {
+                    @extend %disable;
+                    -webkit-tap-highlight-color: transparent;
+                }
+            }
+        }
+    }
+    .note-info {
+        p {
+            @include daynight(color, gray, g5);
+            @include font((fz:.12, lh:.12));
+            span {
+                margin-left: 0.08rem;
+            }
+            &:first-child {
+                margin-bottom: 0.08rem;
+            }
+
+        }
+    }
+}
+
+
+
+
+
