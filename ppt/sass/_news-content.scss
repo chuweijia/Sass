@@ -1,0 +1,185 @@
+/* news-content组件 */
+@import "_share";
+@import "_content-reply";
+@import "_content-table";
+@import "_recommend";//精彩推荐
+@import "_ask-price";//询底价
+.banner{
+    img{
+      width: 100%;
+      vertical-align: top;
+    }
+}
+.master{
+    // padding-bottom:0.01rem;//hack
+    margin-bottom:.1rem;
+    @include border(bottom);
+    @include daynight(border-color,gray,g3);//master-reply之间的缝隙颜色 为父亲content的颜色
+
+    @include daynight(color,gray,g3);
+    header{
+        @include daynight(color,gray,g3);
+    }
+    .master-content{
+      word-break: break-all;
+      @include daynight(color,blue,b2);
+      overflow: hidden;
+      margin-top: .14rem;
+      a{  //后端加的节点 是用户发的链接。
+          @include daynight(color,blue,b1); 
+          word-break:break-all;
+      }
+      @each $k,$v in $fontSizeTheme{//字体大小切换
+          @include fontSizeTheme(#{$k});
+      }
+
+      /** 图片处理 S**/
+      img.inimg,img.outimg{
+          @extend %imgHack;//图片hack+间距
+          @each $k,$v in $imgSize{
+              @include imgSize(#{$k});
+          }
+      }
+      img.inimg{
+          width: 100%;
+      }
+      .vcontent {
+        img {
+          min-width: 100%;//视频无缩放
+          @extend %imgHack;
+        }
+      }
+      .artical_img_txt{//图注
+          @extend %imgNote;
+      }
+      /** 图片处理 E**/
+
+      // strong.summary:before{ //摘要
+      //     content:attr(data-strong);
+      //     display:inline-block;
+      //     width:.2rem;
+      //     height:.2rem;
+      //     @include daynight(color,gray,g1);
+      //     @include daynight(background-color,blue,b1);
+      //     @include font((fz:.15,tx:center,lh:.2,vl:middle));
+      //     margin-right: 0.06rem;
+      // }
+    }
+}
+.master-share{
+    padding:.4rem 0 .39rem 0;
+}
+.reply{
+    @include border(top);
+    @include daynight(border-color,gray,g3);//master-reply之间的缝隙颜色 为父亲content的颜色为灰色
+
+    >section{
+      padding-top:.15rem;
+      &:not(:last-child){//reply子元素之间缝隙为 伪造出来的block伪类 因为父亲reply颜色为白色
+          &:after{
+            content:'';
+            display:block;
+            min-width:100%;
+            height: .1rem;
+            margin:0 -.15rem;
+            @include daynight(background-color,gray,g2);
+            @include border(top);
+            @include border(bottom);
+            @include daynight(border-color,gray,g3);
+          }
+      }
+    }
+    .title{ //题头
+        margin:0 0 0 -.15rem;
+        padding-left: .15rem;
+        @include font((fz:.18,lh:.26));
+        @include daynight(color,blue,b1);
+        border-left: 2px solid;
+        @include daynight(border-color,blue,b1);
+    }
+    .best-new{ //最新评论
+        li{
+          padding-bottom: .1rem;
+        }
+    }
+    .hot-reply{ //热门评论
+        // padding-bottom: .4rem;
+        // padding-bottom: 0;
+        // border-top: none;
+        .title{
+          margin-top: 0;
+        }
+        li{
+          padding-bottom: .1rem;
+        }
+    }
+}
+.content {
+    @include font(top);
+    @include daynight(color, gray, g3);
+    @include daynight(background-color, gray, lazy);
+    // height:100vh;
+    >section{
+        padding-left:.15rem;
+        padding-right:.15rem;
+        @include daynight(background-color, gray, g6);
+    }
+    >a{
+        @include daynight(background-image,image,reload);
+        @include background((sz:0));
+    }
+    // >div{@include daynight(background-color, gray, g6);}
+
+    &.offline {
+        @include daynight(background-color, gray, g2);
+        height: 100vh; 
+        > section {
+            &:not(:last-child) {
+                display: none;
+            }
+            &.reload{
+                //display:none;
+                @extend %flex-center; 
+                padding-top: 1.45rem;
+                @include daynight(background-color, gray, lazy); //颜色覆盖
+                div{
+                    a{
+                        //inline-block会有下边距(可用vertical-align将图片下沉)且无法居中(margin:0 auto;不支持)
+                        //flex-center时候会自动将多子元素统一设置inline-block后抹成一行居中..
+                        display:block;
+                        margin:0 auto .18rem auto;
+                        width:.9rem;
+                        height:.9rem;
+                        @include daynight(background-image,image,reload);
+                        @include background((sz:.9rem .9rem)); 
+                                 
+                    }
+                    p{
+                        @include font((fz:.15));
+                        @include daynight(color,gray,g5);
+                    }
+                }
+            }
+        }
+    }
+}
+.more-bt { //查看更多评论
+    //padding-bottom: .35rem;
+    .show{
+      display: block;
+          @include border(top);
+          @include border(bottom);
+          @include daynight(border-color,gray,g3);
+          @include daynight(background-color,gray,g6);
+          @include daynight(color,blue,b1);
+          @include font((fz:.14,lh:.46,vl:.46,tx:center));
+          box-sizing:border-box;//height 中包含border高度
+          padding-bottom: 0;
+    }
+    &:after{//底部灰条条 
+        //content:"";
+        display:block;
+        height:.1rem;
+        @include daynight(background-color,gray,lazy);
+    }
+}

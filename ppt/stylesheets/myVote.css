@@ -1,0 +1,300 @@
+@charset "UTF-8";
+/* reset组件 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+em {
+  font-style: normal; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  /*
+    CSS 2; used to remove quotes in case "none" fails below.
+    */
+  content: "";
+  /*
+  CSS 2.1; will remove quotes if supported, and override the above.
+  User-agents that don't understand "none" should ignore it, and
+  keep the above value. This is here for future compatibility,
+  though I'm not 100% convinced that it's a good idea...
+  */
+  content: none; }
+
+input, button, a, img {
+  -webkit-touch-callout: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.clearfix {
+  zoom: 1; }
+
+.clearfix:after {
+  /*清除浮动*/
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden; }
+
+i {
+  font-style: normal; }
+
+h2 {
+  font-weight: inherit; }
+
+/* flex组件 */
+/* common组件 */
+img[src*="images/smilies"] {
+  vertical-align: middle; }
+
+.day {
+  background-color: #f2f3f6; }
+
+.night {
+  background-color: #212732; }
+
+.common {
+  width: 100px; }
+
+/* note组件 */
+@-webkit-keyframes progressAnimate {
+  0% {
+    width: 0; }
+  100% {
+    width: 100%; } }
+.note {
+  font-size: 0.17rem; }
+  .day .note .note-table .head, .day .note .note-table .foot a {
+    color: #ffffff; }
+  .night .note .note-table .head, .night .note .note-table .foot a {
+    color: #d5d9e1; }
+  .day .note .note-table .head, .day .note .note-table .foot a {
+    background-color: #1bacff; }
+  .night .note .note-table .head, .night .note .note-table .foot a {
+    background-color: #2896f7; }
+  .day .note .note-table .foot a.disable {
+    color: #ffffff; }
+  .night .note .note-table .foot a.disable {
+    color: #d5d9e1; }
+  .day .note .note-table .foot a.disable {
+    background-color: #c2c6d3; }
+  .night .note .note-table .foot a.disable {
+    background-color: #797a81; }
+  .note .note-table .head {
+    line-height: 0.17rem;
+    padding-top: .15rem;
+    padding-bottom: .15rem; }
+    .note .note-table .head p {
+      display: inline-block;
+      line-height: 0.17rem;
+      text-align: center; }
+      .note .note-table .head p:first-child {
+        width: 50%; }
+      .note .note-table .head p:last-child {
+        width: 49%; }
+    .note .note-table .head .note-line {
+      border-left: 1px solid; }
+      .day .note .note-table .head .note-line {
+        color: #ffffff; }
+      .night .note .note-table .head .note-line {
+        color: #d5d9e1; }
+  .note .note-table .body {
+    border: 1px solid; }
+    .day .note .note-table .body {
+      border-color: #dee2eb; }
+    .night .note .note-table .body {
+      border-color: #596a89; }
+    .day .note .note-table .body > li {
+      color: #a7acbb; }
+    .night .note .note-table .body > li {
+      color: #8996b2; }
+    .day .note .note-table .body > li {
+      background-color: #ffffff; }
+    .night .note .note-table .body > li {
+      background-color: #2a3342; }
+    .note .note-table .body > li label {
+      padding: .19rem .14rem;
+      display: block; }
+      .day .note .note-table .body > li label > span {
+        color: #354056; }
+      .night .note .note-table .body > li label > span {
+        color: #a8b9d9; }
+      .note .note-table .body > li label > p {
+        display: inline-block; }
+      .note .note-table .body > li label .vote-check {
+        display: block;
+        width: .3rem;
+        text-align: right; }
+    .note .note-table .body > li:not(:last-child) {
+      border-bottom: 1px solid; }
+      .day .note .note-table .body > li:not(:last-child) {
+        border-color: #dee2eb; }
+      .night .note .note-table .body > li:not(:last-child) {
+        border-color: #596a89; }
+    .note .note-table .body.activity li {
+      box-sizing: border-box;
+      padding: .19rem .14rem; }
+      .note .note-table .body.activity li.clearfix {
+        overflow: auto; }
+      .note .note-table .body.activity li span {
+        display: inline-block;
+        float: left; }
+        .day .note .note-table .body.activity li span {
+          color: #354056; }
+        .night .note .note-table .body.activity li span {
+          color: #a8b9d9; }
+      .note .note-table .body.activity li p {
+        display: inline-block;
+        float: left;
+        max-width: 2.3rem; }
+    .note .note-table .body.vote li {
+      padding: 0;
+      border-top-width: 0;
+      position: relative; }
+      .note .note-table .body.vote li label {
+        position: relative;
+        z-index: 1; }
+        .note .note-table .body.vote li label span {
+          display: inline-block;
+          word-break: break-all; }
+          .note .note-table .body.vote li label span.vote-limit {
+            max-width: calc(100% - .5rem); }
+          .note .note-table .body.vote li label span.vote-nolimit {
+            max-width: calc(100% - 1rem); }
+          .note .note-table .body.vote li label span.voted-limit {
+            max-width: calc(100% - .6rem); }
+        .note .note-table .body.vote li label div {
+          float: right; }
+          .note .note-table .body.vote li label div em {
+            margin-left: .16rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0; }
+          .note .note-table .body.vote li label div input {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            -webkit-appearance: none;
+            cursor: pointer;
+            margin-left: .16rem;
+            border-radius: 50%;
+            border: 1px solid;
+            width: .2rem;
+            height: .2rem;
+            outline: none; }
+            .day .note .note-table .body.vote li label div input {
+              background-color: #ffffff; }
+            .night .note .note-table .body.vote li label div input {
+              background-color: #2a3342; }
+            .day .note .note-table .body.vote li label div input {
+              border-color: #1bacff; }
+            .night .note .note-table .body.vote li label div input {
+              border-color: #2896f7; }
+            .note .note-table .body.vote li label div input:after {
+              opacity: 1;
+              content: '';
+              position: absolute;
+              width: 0.09rem;
+              height: 0.05rem;
+              top: 0.04rem;
+              left: 0.04rem;
+              border: 0.02rem solid;
+              border-top: none;
+              border-right: none;
+              -webkit-transform: rotate(-45deg);
+              -moz-transform: rotate(-45deg);
+              -o-transform: rotate(-45deg);
+              -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+              .day .note .note-table .body.vote li label div input:after {
+                border-color: #ffffff; }
+              .night .note .note-table .body.vote li label div input:after {
+                border-color: #2a3342; }
+          .day .note .note-table .body.vote li label div input[type=checkbox]:checked, .day .note .note-table .body.vote li label div input[type=radio]:checked {
+            background-color: #1bacff; }
+          .night .note .note-table .body.vote li label div input[type=checkbox]:checked, .night .note .note-table .body.vote li label div input[type=radio]:checked {
+            background-color: #2896f7; }
+          .day .note .note-table .body.vote li label div input[type=checkbox]:checked:after, .day .note .note-table .body.vote li label div input[type=radio]:checked:after {
+            border-color: #ffffff; }
+          .night .note .note-table .body.vote li label div input[type=checkbox]:checked:after, .night .note .note-table .body.vote li label div input[type=radio]:checked:after {
+            border-color: #d5d9e1; }
+      .note .note-table .body.vote li .rate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%; }
+        .note .note-table .body.vote li .rate p {
+          height: 100%; }
+          .day .note .note-table .body.vote li .rate p {
+            background-color: #f2f3f6; }
+          .night .note .note-table .body.vote li .rate p {
+            background-color: #212732; }
+          .note .note-table .body.vote li .rate p.rate-animate {
+            animation-name: progressAnimate;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            -webkit-animation-name: progressAnimate;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-fill-mode: forwards; }
+          .day .note .note-table .body.vote li .rate p.rate-my {
+            background-color: #fcdd9b; }
+          .night .note .note-table .body.vote li .rate p.rate-my {
+            background-color: #92773d; }
+  .note .note-table .foot {
+    margin: .15rem 0 .15rem 0; }
+    .note .note-table .foot a {
+      border-radius: 0.07rem;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      line-height: 0.44rem; }
+      .note .note-table .foot a.disable {
+        -webkit-tap-highlight-color: transparent; }
+  .note .note-info p {
+    font-size: 0.12rem;
+    line-height: 0.12rem; }
+    .day .note .note-info p {
+      color: #a7acbb; }
+    .night .note .note-info p {
+      color: #8996b2; }
+    .note .note-info p span {
+      margin-left: 0.08rem; }
+    .note .note-info p:first-child {
+      margin-bottom: 0.08rem; }
+
+/*# sourceMappingURL=myVote.css.map */

@@ -1,0 +1,30 @@
+//@import "_common";
+/* level组件 */
+.level{
+	position: relative;
+	.face-wrap{
+		border-radius:50%;
+		overflow: hidden;
+		float: left;
+	}
+	img{
+		float:left;
+	    width:.46rem;//master区的头像宽度（默认）
+	    border-radius:50%;
+	}
+	.icon{//等级加V
+		position: absolute;
+
+		@include font((fz:.1,lh:.2,tx:center));//挤出来了..
+		@include border(all,0.02rem);
+		@include daynight(border-color,gray,g6);
+		@include daynight(color,gray,g1);
+		background: #ff9065;
+		border-radius:50%;
+		right: -0.09rem;
+		top: .24rem;
+		width: .18rem;
+		height: .18rem;
+	}
+
+}

@@ -1,0 +1,174 @@
+/* 智障碎片 */
+@mixin wh($value){
+  width: $value;
+  height: $value;
+}
+@mixin radius($value){
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+@mixin fontStyle($size,$lh:null,$color:#354056,$align:null){
+  font-size: $size;
+  line-height: $lh;
+  color: $color;
+  text-align: $align;
+}
+@function ptr($px){
+  @return $px / 2 / 100 * 1rem;
+}
+%gray-txt{
+  float: left;
+  @include fontStyle(.12rem,null,#a7acbb);
+}
+%common-photo{
+  float: left;
+  width: ptr(92);
+  height: ptr(92);
+  @include radius(50%);
+}
+%bg{
+  background-image: url(../images/ico.png);
+  -webkit-background-size: ptr(100) auto;
+  background-size: ptr(100) auto;
+  background-repeat: no-repeat;
+}
+@mixin transform($value1,$value2){
+  -webkit-transform: translate($value1,$value2);
+  -moz-transform: translate($value1,$value2);
+  -ms-transform: translate($value1,$value2);
+  -o-transform: translate($value1,$value2);
+  transform: translate($value1,$value2);
+}
+
+//1行文字隐藏+省略号
+%txtHide{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+//2行文字隐藏+省略号
+%txtHide2{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;}
+
+
+//以下是主题换肤/大小字/大小图  一定要优化啊！
+body {
+  @include font((ff:"" Microsoft YaHei "")); //---完全无用的字体设置，app里面会有默认字体，不可能存在微软雅黑
+  @include daynight(background-color, gray, g6);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+//.content .article-content,
+//.article-info .title,
+//.txt-info .name,.recommend-list .name,
+//.comment-list .name,
+//.comment-list .describe,
+//.consult-price .left .name{
+//  @include daynight(color,blue,b2)}
+//
+//.comment-list .reply-mod{
+//  @include daynight(background,gray,g2)}
+//
+//.share-wrap,
+//.recommend-list,
+//.comment-list li,
+//.consult-price,
+//.master-msg{@include daynight(border-color,gray,g3)}
+//
+//.txt-info .time,
+//.recommend-list .time,
+//.comment-list .time,
+//.action-box .like{@include daynight(color,gray,g5)}
+//
+//.recommend-mode .title,
+//.comment-mode .title{@include daynight(color,blue,b1)}
+//
+//.article-content img,
+//.article-content .video,
+//.comment-list .insert-img img{
+//  @each $k,$v in $imgSize{
+//    @include imgSize(#{$k});
+//  }
+//}
+//.master-content,
+//.comment-list .name,
+//.comment-list .describe,
+//.comment-list .reply-mod .reply-info{
+//  @each $k,$v in $fontSizeTheme{
+//    @include fontSizeTheme(#{$k});//字体大小切换
+//  }
+
+//}
+//关注的四种状态
+.user-mode{
+  padding: .14rem 0;
+  border-bottom: 1px solid;
+  @include daynight(border-color,gray,g3);
+  .follow-btn{
+    display: inline-block;
+    height: .32rem;
+    padding: 0 .12rem;
+    @include radius(6px);
+    @include fontStyle(.17rem,.30rem,#fff,center);
+    @include daynight(background,blue,b1);
+    .ico{
+      display: inline-block;
+      @include wh(ptr(28));
+      background-position: 0 ptr(-176);
+      margin-right: 0.04rem;}}
+}
+//.user-mode{
+//  .cancelConcern,.tickConcern,.eachConcern{
+//    border: 1px solid;
+//    @include daynight(background,gray,g6);
+//    @include daynight(border-color,gray,g3);
+//    @include daynight(color,blue,b1);
+//  }
+//  .cancelConcern .ico{
+//    @include wh(ptr(24));
+//    background-position: 0 ptr(-339);
+//  }
+//  .tickConcern .ico{
+//      width: ptr(28);
+//      height: ptr(21);
+//      background-position: 0 ptr(-234);}
+//
+//  .eachConcern .ico{
+//    @include wh(ptr(25));
+//    background-position: 0 ptr(-285);}
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

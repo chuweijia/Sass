@@ -1,0 +1,77 @@
+.type-wrap{
+  margin-top: .1rem;
+  h2{
+    @include daynight(background,blue,b1);
+    @include daynight(color,gray,g1);
+    @include ft-size(.17rem);
+    @include line-ht(.54rem);
+    @include pd(0 .4rem);
+    text-align: center;
+    @extend %hidden;
+  }
+  .btn-big{
+    display: block;
+    margin-top: .15rem;
+    @include wht(100%,.44rem);
+    @include line-ht(.44rem);
+    @extend .ask-price-btn;
+  }
+  .caption{
+    @include pd(.12rem 0 0);
+    @include ft-size(.12rem);
+    @include line-ht(.16rem);
+    @include daynight(color,gray,g5);
+  }
+}
+.type-con{
+  border: 1px solid;
+  border-bottom: 0;
+  @include daynight(border-color,gray,g3);
+}
+.ask-price-btn{
+  -webkit-user-select:none;
+  @include ft-size(.17rem);
+  @include daynight(background,blue,b1);
+  @include daynight(color,gray,g1);
+  text-align: center;
+  border-radius: .05rem;
+}
+.type-item{
+  @extend %flex-between;
+  // height: .88rem;
+  border-bottom: 1px solid;
+  @include daynight(border-color,gray,g3);
+  padding:.25rem 0.07rem;
+  .btn-sml{
+    @include wht(.77rem,.32rem);
+    @include line-ht(.32rem);
+    @extend .ask-price-btn;
+  }
+}
+.type-info{
+  @include ft-size(.17rem);
+  width: 2.4rem;
+  .type{
+    @include line-ht(.24rem);
+  }
+  .price{
+    @include ft-size(.15rem);
+  }
+  .price1{
+    @include daynight(color,gray,g5);
+    text-decoration: line-through;
+  }
+  .price2{
+    @include daynight(color,blue,b3);
+  }
+  .price3{
+    @include daynight(color,red,r2);
+   }
+
+}
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+//@import "_tag";
+/* advert组件 */
+.advert{
+    //height:.5rem;
+    padding:.15rem 0;
+    @include font((fz:.17));
+    @include border(top); 
+    @include daynight(border-color, gray, g3);
+    em{
+        @extend %tag;
+        float:left;
+        margin:0 .1rem 0 0;
+        @include daynight(border-color,red,r1); 
+        @include daynight(color,red,r1);
+        vertical-align:text-bottom;
+    }
+    a{
+        max-width: calc(100% - 0.49rem); //calc(100% - 0.48rem) iphone6算是这个 小米有误差..
+        display: inline-block;
+        line-height:normal;
+        @include daynight(color,blue,b2);
+    }
+
+}

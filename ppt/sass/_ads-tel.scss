@@ -1,0 +1,32 @@
+.ads-tel{
+  @extend %flex-between;
+  border: 1px solid;
+  @include daynight(border-color,gray,g3);
+  @include pd(.08rem .14rem .14rem .08rem);
+  .tel{
+    @include wht(.32rem,.32rem);
+    border-radius: 50%;
+    @include daynight(background,blue,b1);
+    em{
+      display: block;
+      margin:.08rem auto 0;
+      @include wht(.15rem,.15rem);
+      //@include bg-png(tel);
+      @include daynight(background-image, image, tel);
+      @include bg-size(100%);
+    }
+  }
+}
+.ads-con{
+  width: 2.8rem;
+  .name{
+    @include line-ht(.3rem);
+    @include ft-size(.17rem);
+    @extend %hidden;
+  }
+  .ads{
+    @include line-ht(.18rem);
+    @include ft-size(.15rem);
+    @include daynight(color,gray,g5);
+  }
+}

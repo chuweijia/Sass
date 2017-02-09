@@ -1,0 +1,10 @@
+/* market-header组件 */
+@import "_header-master-title";
+.cx-time { //剩余天数
+	@include ft-size(.15rem);
+	@include line-ht(.35rem);
+	@include pd(0 0 .04rem 0);
+	.blue {
+	@include daynight(color,blue,b1);
+	}
+}

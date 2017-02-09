@@ -1,0 +1,104 @@
+/* more组件(更多点击动画) */
+//@import "_common";
+@-webkit-keyframes showMore {
+  	0% { 
+  		right:-1.11rem;
+  		opacity:0;
+  	}
+  	50% { 	 
+  		opacity:0;
+  	}
+  	100% { 
+  	    right:.4rem;
+  	    opacity:1;
+  	}
+}
+@-webkit-keyframes hideMore {
+  	0% { 
+  		right:.4rem;
+  	    opacity:1;
+  	}
+  	30% { 
+  	    opacity:0;
+  	}
+  	100% { 
+  	    right:0rem;
+  		opacity:0;
+  		// display:none;
+  		z-index:-1;
+  	}
+}
+.more-parent{
+	position:absolute;
+	bottom:0.05rem;
+
+	&.disnone{
+	 	display:none;
+	 }
+	 &.showMore{
+	 	display:block;
+		animation: showMore 0.5s ease;  
+	    animation-fill-mode: forwards; 
+	    -webkit-animation: showMore 0.5s ease;  
+	    -webkit-animation-fill-mode: forwards; 
+	 }
+	 &.hideMore{
+	 	display:none;
+	 	// animation: hideMore 0.5s ease;  
+	  //   animation-fill-mode: forwards; 
+	  //   -webkit-animation: hideMore 0.5s ease;  
+	  //   -webkit-animation-fill-mode: forwards; 
+	 }
+	    
+	.more-content{//显:动画效果从右边变长至左  隐:点击空白 直接消失
+		@include border();
+		@include daynight(border-color,gray,g3);
+		@include daynight(background-color,gray,g2);
+		// min-width: 1.17rem; 我为什么设了个最小值
+		height: .32rem;	
+		border-radius: 0.07rem;
+		p{
+			line-height: 0.32rem;
+    		height: .32rem;//由于这个P是个block元素 本身有高度 得手动设置上
+			a{
+				display:inline-block;
+				vertical-align: top; 
+    			margin-top: 1px;
+				@include font((fz:.15,tx:center));
+				@include daynight(color,blue,b2);
+				&:first-child{
+					padding:0 .15rem 0 .15rem;
+				}
+				&:last-child{
+					padding:0 .15rem 0 .14rem;
+				}
+				&.scoreded{
+					@include daynight(color,gray,g7);
+				}
+			}
+			.more-line{
+				@include font((fz:0,vl:-0.02rem));
+				@include daynight(border-color,gray,g3);
+				@include border(left);
+			    padding-top:.15rem;
+			   
+			}
+		}
+	}
+	.more-san{//三角区
+		width: .1rem;
+	    height: .1rem;
+	    @include daynight(background-color,gray,g2);
+	    position: absolute;
+	    top: 50%;
+	    right: -0.055rem;
+	    margin-top: -0.06rem;
+	    @include border(top);
+	    @include border(right);
+	    @include daynight(border-color,gray,g3);
+	    -webkit-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+}
+
+

@@ -1,0 +1,70 @@
+//新闻详情页表格
+//@import "_common";
+/* content-table组件 */
+.master-content{
+    table{
+        width: 100%;
+        margin: .1rem 0;
+        word-break: break-word;
+        tr{
+            &:first-child{
+                @include daynight(background,blue,b1);
+                @include daynight(border-color,blue,b1);
+                @include daynight(border-bottom-color,gray,g3);
+                // td{
+                //     @include daynight(color,gray,g1);
+                //     @include daynight(border-color,blue,b1);
+                //     border-bottom-width: 0px;
+                //     font-size: .17rem;
+                // }
+                th,td{
+                    padding: .1rem .02rem;//05的话 冒号会下去..
+                    @include daynight(background,blue,b1);
+                    @include daynight(color,gray,g1);
+                    @include daynight(border-color,gray,g1);
+                    @include daynight(border-bottom-color,blue,b1);
+                    @include font((fz:.17,lh:.2,tx:center,vl:middle));
+                    @include border(right);
+                    &:last-child{
+                        @include daynight(border-color,blue,b1);
+                    }
+                }
+            } 
+            @include border(left);
+            @include daynight(border-left-color,gray,g3);
+            td{
+                padding: .1rem .05rem;
+                @include font((fz:.15,lh:.2,tx:center,vl:middle));
+                @include daynight(color,blue,b2);
+                @include daynight(border-color,gray,g3);
+                @include border(right);
+                @include border(bottom);
+            }
+            th{
+                padding: .1rem .02rem;//05的话 冒号会下去..
+                @include daynight(background,blue,b1);
+                @include daynight(color,gray,g1);
+                @include font((fz:.17,lh:.2,tx:center,vl:middle));
+                @include daynight(border-color,gray,g1);
+                @include border(right);
+                &:first-child{
+                    @include border(left);
+                    @include daynight(border-left-color,blue,b1);
+                }
+                &:last-child{
+                    @include daynight(border-color,blue,b1);
+                }
+            }
+            
+        }
+       
+    }
+}
+
+
+
+
+
+
+
+

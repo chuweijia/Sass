@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="day fontSmall">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>vote</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/myVote.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script>
+
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+<body>
+	<div class="note ">
+                <div class="note-table ">
+                    <div class="head">
+                        <p>活动进行中</p><span class="note-line"></span><p>1455人参加</p>
+                    </div>
+                    <ul class="body vote"> <!-- activity 不要叠加 -->
+                        <li>
+                            <label>
+                             <span class="vote-nolimit">投票帖子超长折行超长折行超长折行超长折行超长折行超长折行长折行超长折行超长折行超长折行</span>
+                                <div class="vote-item">
+                                    <em>50%</em>
+                                    <input type="checkbox" value="打酱油" name="vote">
+                                </div>
+                            </label>
+                            <div class="rate" style="width:50%;"><p class="rate-animate"></p></div>
+                        </li> 
+                         <li>
+                            <label>
+                             <span class="vote-nolimit">投票帖子啦啦啦啦啊</span>
+                                <div class="vote-item">
+                                    <em>60%</em>
+                                    <input type="checkbox" value="打酱油" name="vote">
+                                </div>
+                            </label>
+                            <div class="rate" style="width:60%;"><p class="rate-animate"></p></div>
+                        </li>
+                        <li>
+                            <label>
+                             <span class="vote-limit">投票帖子超长折行超长折行超长折行超长折行超长折行超长折行</span>
+                                <div class="vote-item">
+                                 <input type="checkbox" value="打酱油" name="vote" >
+                                </div>
+                            </label>
+                        </li>
+                         <li>
+                            <label>
+                             <span class="vote-limit">投票帖不换行</span>
+                                <div class="vote-item">
+                                 <input type="checkbox" value="打酱油" name="vote">
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <span class="voted-limit">天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上天上</span>
+                                <div class="vote-item">
+                                    <em>80%</em>
+                                </div>
+                            </label>
+                            <div style="width:80%;" class="rate"><p class="rate-animate rate-my"></p></div>
+                        </li>
+
+                    </ul>
+                    <div class="foot">
+                        <!-- 	<a>我要报名</a>  --><!--.activity 跳转到相应链接 -->
+                        <a>投票 （还可选<span class="vote-num">2</span>项）</a><!--.activity 跳转到相应链接 -->
+                        <!-- <a>已投票，分享给小伙伴</a> --> <!--.voted 跳转到相应链接 -->
+                    </div>
+                </div>
+                <div class="note-info">
+                    <p>报名截止至:<span>08-19 07:20</span></p>
+                    <p>此活动只能V3及以上用户才可参与</p>
+                </div>
+            </div>
+
+
+
+
+			<div class="note">
+			<div class="note-table ">
+            <div class="head">
+                <p>活动进行中</p><span class="note-line"></span><p>1455人参加</p>
+            </div>
+            <ul class="body activity"> <!-- activity 不要叠加 -->
+				<li class="clearfix">
+	                <span>活动时间：</span>
+	                <p class="vote-item">
+	                    06-13 14:32至06-13 14:32
+	                </p>
+	            </li><li class="clearfix">
+	                <span>活动地点：</span>
+	                <p class="vote-item">
+	                    这个时间数据能直接传进来吗因为有空格很长的时候同行换行
+	                </p>
+	            </li><li class="clearfix">
+	                <span>花　　销：</span>
+	                <p class="vote-item">
+	                    200
+	                </p>
+	            </li>
+            </ul>
+            <div class="foot">
+                <!-- 	<a>我要报名</a>  --><!--.activity 跳转到相应链接 -->
+                <a>报名结束</a><!--.activity 跳转到相应链接 -->
+                <!-- <a>已投票，分享给小伙伴</a> --> <!--.voted 跳转到相应链接 -->
+            </div>
+            <div class="note-info">
+                <p>报名截止至:<span>08-19 07:20</span></p>
+                <p>此活动只能V3及以上用户才可参与</p>
+        	</div>
+</div>
+
+
+            <script type="text/javascript">
+            	var _maxCheck = 2;
+			    $('.vote li').each(function(){
+			        $(this).on('click',function(e){
+			            var _isChecked = $('input[name="vote"]:checked').length; 
+			            if(_isChecked == _maxCheck){
+			                $('.vote-num').text(_maxCheck - _isChecked);
+			                $('input[name=vote]').each(function(index, el) {
+			                    var flag = $(el).prop('checked');
+			                    if(flag == false){
+			                        $(el).attr('disabled',true);
+			                        $(el).css('borderColor','gray');
+			                    }
+			                });
+			            }
+			            else{
+			                $('.vote-num').text(_maxCheck - _isChecked);
+			                $('input[name=vote]').each(function(index, el) {
+			                    $(el).attr('disabled',false);
+			                    $(el).css('borderColor','#1bacff');
+			                });
+			            }
+			        });
+			    });
+
+
+            </script>
+</body>
+</html>

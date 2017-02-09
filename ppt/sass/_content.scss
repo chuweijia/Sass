@@ -1,0 +1,83 @@
+@import "_content-reply";
+@import "_content-master";
+
+.content {
+    @include font(top);
+    @include daynight(color, gray, g3);
+    @include daynight(background-color, gray, lazy);
+    // height:100vh;
+    >section{
+        padding: 0 .15rem 0 .15rem;
+    }
+    >a{
+        @include daynight(background-image,image,reload);
+        @include background((sz:0));
+    }
+    &.load { //初始加载 当加载完毕时
+        height: 6.67rem;
+        @include daynight(background-image, image, preload);
+        background-color: transparent;//为了覆盖掉原同色的背景 变为背景透明
+        @include background((sz:100% auto, pz:50% .1rem)); //因为avatar的margin-top:10px
+        > section {
+            display: none;
+        }
+    }
+    &.offline {
+        @include daynight(background-color, gray, g2);
+        height: 100vh; 
+        > section {
+            &:not(:last-child) {
+                display: none;
+            }
+            &.reload{
+                //display:none;
+                @extend %flex-center; 
+                padding-top: 1.45rem;
+                div{
+                    a{
+                        //inline-block会有下边距(可用vertical-align将图片下沉)且无法居中(margin:0 auto;不支持)
+                        //flex-center时候会自动将多子元素统一设置inline-block后抹成一行居中..
+                        display:block;
+                        margin:0 auto .18rem auto;
+                        width:.9rem;
+                        height:.9rem;
+                        @include daynight(background-image,image,reload);
+                        @include background((sz:.9rem .9rem)); 
+                                 
+                    }
+                    p{
+                        @include font((fz:.15));
+                        @include daynight(color,gray,g5);
+                    }
+                }
+            }
+        }
+    }
+    &.authority {
+    @include daynight(background-color, gray, g2);
+        height: 100vh;
+        > section {
+            &:not(:last-child) {
+                display: none;
+            }
+            &.authorityNote{
+                @extend %flex-center;
+                padding-top: 1.45rem;
+                div{
+                    a{
+                        display:block;
+                        margin:0 auto .18rem auto;
+                        width:1.2rem;
+                        height:1.2rem;
+                        @include daynight(background-image,image,authority);
+                        @include background((sz:1.2rem 1.2rem));          
+                    }
+                    p{
+                        @include font((fz:.15,tx:center,lh:.2));
+                        @include daynight(color,gray,g5);
+                    }
+                }
+            }
+        }
+    }
+}

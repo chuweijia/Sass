@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="day fontSmall imgBig">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>header</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/myHeader.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script>
+
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<body>
+<div class="content" style="margin-top:50%;">
+        <!-- master（左头像+右关注） -->
+    <section class="master">
+        <header>
+            <div class="avatar">
+                <div class="avatar-photo">
+                    <a class="level" data-level="v2">
+                        <img class="tx" src="images/chu.png" alt=""><i class="icon">V5</i> 
+                    </a>
+                    <div class="avatar-name">
+                        <a class="master-name"><span class="txt">主治医生</span></a>
+                        <p class="master-time">42分钟前</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <header>
+            <div class="avatar">
+                <div class="avatar-photo">
+                    <a class="level" data-level="v2">
+                        <img class="tx" src="images/chu.png" alt=""><i class="icon">V5</i> 
+                    </a>
+                    <div class="avatar-name">
+                        <a class="master-name"><span class="txt">主治医生</span></a>
+                        <p class="master-time">42分钟前</p>
+                    </div>
+                </div>
+                <a href="#" class="avatar-concern  addConcern">
+                    <span>关注</span>
+                </a>
+            </div>
+        </header>
+        <header>
+                <div class="avatar  ">
+                    <div class="avatar-photo  ">
+                        <a class="level">
+                            <img class="tx" src="images/chu.png" alt="">
+                        </a>
+                        <div class="avatar-name">
+                            <a class="master-name"><span class="txt">主治医生名字超长省略显示省略省略</span></a>
+                        <p class="master-time">2分钟前</p>
+                        </div>
+                    </div>
+                    <div class="avatar-floor">
+                        <span>6</span> 楼
+                    </div>
+                </div>
+        </header>
+    </section>
+
+    <section class="reply">
+        <ul>
+        <li>
+            <div class="reply-content">
+                <div class="reply-re-content">
+                    <!-- reply-re （左名字+右楼层） -->
+                    <header>
+                        <div class="avatar">
+                            <div>主治医生</div>
+                            <div>
+                                <span>4</span> 楼
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="reply-time">
+                </div>
+            </div>        
+        </li>
+        </ul>
+    </section>
+
+</div>
+    <script type="text/javascript">
+        $('.avatar-concern').on('click',function(){
+            if($(this).hasClass('addConcern')){
+                $(this).removeClass('addConcern').addClass('cancelConcern');
+                $($(this).find('span')[0]).text('已关注');
+            }else{
+                $(this).removeClass('cancelConcern').addClass('addConcern');
+                $($(this).find('span')[0]).text('关注');
+            }   
+        });
+
+    </script>
+
+
+</body>
+</body>
+
+</html>

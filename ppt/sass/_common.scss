@@ -1,0 +1,285 @@
+/* common组件 */
+@import "_theme"; //换肤
+@mixin media($minWidth,$fontSize) {
+    @media(min-width: $minWidth) {
+        html {
+            font-size: $fontSize;
+        }
+    }
+}
+
+//字体
+$fonts: (
+    style:(
+        ff:font-family
+    ),
+    size:(//不能写成$size 会报错未定义
+        fz:font-size,
+        lh:line-height
+    ),
+    position:(
+        tx:text-align,
+        vl:vertical-align
+    )
+);
+//字体大小
+$fontSizeTheme: (//入口函数参数和daynight不同 无法统一
+    fontSmall:(
+        fz:.17,
+        lh:.28
+    ),
+    fontMiddle:(
+        fz:.2,
+        lh:.3
+    ),
+    fontBig:(
+        fz:.24,
+        lh:.36
+    )
+);
+//大小图切换
+$imgSize: (
+    imgSmall:(
+        mw:2rem
+    ),
+    imgBig:(
+        mw:100%
+    )
+);
+//背景
+$background: (
+    url:(
+        img:background-image
+    ),
+    size:(
+        sz:background-size
+    ),
+    position:(
+        pz:background-position,
+        re:background-repeat
+    )
+);
+@mixin font($arr) {
+    @each $k, $v in $arr {
+        @if map-has-key(map-get($fonts, size), $k) {
+            #{map-get(map-get($fonts,size),$k)}: #{$v}rem;
+        } @else if map-has-key(map-get($fonts, style), $k) {
+            #{map-get(map-get($fonts,style),$k)}: #{$v};
+        } @else if map-has-key(map-get($fonts, position), $k) {
+            #{map-get(map-get($fonts,position),$k)}: #{$v};
+        }
+    }
+}
+
+@mixin background($arr) {
+    @each $k, $v in $arr {
+        background-repeat: no-repeat;
+        @if map-has-key(map-get($background, url), $k) {
+            #{map-get(map-get($background,url),$k)}: url(../images/#{$v}.png);
+        } @else if map-has-key(map-get($background, size), $k) {
+            #{map-get(map-get($background,size),$k)}: #{$v};
+        } @else if map-has-key(map-get($background, position), $k) {
+            #{map-get(map-get($background,position),$k)}: #{$v};
+        }
+    }
+}
+
+$border-position-all: all !default;
+$border-default-size: 1px !default;
+$border-default-pattern: solid !default;
+
+@mixin border($border-position: $border-position-all,
+  $border-size: $border-default-size,
+  $border-pattern: $border-default-pattern
+) {
+
+    @if $border-position == $border-position-all {
+        border: $border-size $border-pattern;
+    } @else {
+        border-#{$border-position}: $border-size $border-pattern;
+    }
+}
+
+$small: map-get($fontSizeTheme, small) !default;
+@mixin fontSizeTheme($style:$small) {
+    @if map-has-key($fontSizeTheme, $style) {
+        .#{$style} & {
+            $fz: map-get(map-get($fontSizeTheme, $style), fz);
+            $lh: map-get(map-get($fontSizeTheme, $style), lh);
+            @include font((fz:#{$fz}, lh:#{$lh}));
+        }
+    }
+}
+
+@mixin imgSize($style:imgBig) {
+    @if map-has-key($imgSize, $style) {
+        .#{$style} & {
+            max-width: map-get(map-get($imgSize, $style), mw);
+        }
+    }
+}
+
+%imgHack {//间距
+    display: block;
+    margin: .14rem 0;
+    vertical-align: bottom;
+    -webkit-user-select: none;//禁用长按事件
+}
+
+// .b {
+//     @include background((img:"false", sz:.5rem .5rem, pz:10px 10px));
+//     @include border(bottom, 0.5rem); //需要加一个all
+// }
+%imgNote{
+        margin: -.14rem 0 .14rem 0;
+        @include font((fz:.15,lh:.20,tx:left));
+        @include daynight(color,gray,g1);
+        display:inline-block;
+        //width: calc(100% - 2*.15rem);
+        padding: .15rem;
+        background: #000000;
+    @each $item in map-keys($imgSize){
+        .#{$item} & {
+            @if $item == imgBig{
+                display:block;
+            }
+            @else if $item == imgSmall{
+                display:none;
+            }
+        }
+    }
+}
+%imgSize{//只适用于新闻详情页
+    img.inimg,img.outimg{ //发帖图 图片统一这样处理
+        @extend %imgHack;
+        @each $k, $v in $imgSize {
+            @include imgSize(#{$k});
+        }
+    }
+    em{
+        @extend %imgNote;
+    }
+}
+%imgLook{ //表情
+    display: inline-block;
+    vertical-align: text-top;
+    margin: 0 0.03rem;
+}
+%txtHide{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+//2行文字隐藏+省略号
+%txtHide2{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+img[src*="images/smilies"]{//表情
+    vertical-align: middle;
+}
+.day{
+    background-color: #f2f3f6;
+}
+.night{
+    background-color: #212732;
+}
+// .chuw{
+// 	@include fontSizeTheme(small);
+// }
+
+// @each $k,$v in $fontSizeTheme {
+// 	$a:$k;
+// 	.s{
+// 		font-size:#{$a};
+// 	}
+
+// }
+
+// %concern-style1{ // +
+//     @include daynight(color,gray,g1);
+//     @include daynight(background-color,blue,b1);
+//   }
+//   %concern-style2{// !+
+//       @include daynight(color,blue,b1);
+//       @include daynight(border-color,gray,g3);
+//       @include daynight(background-color,gray,g6);
+//       @include border();
+//   }
+//   $concern-type: (//defaultType-style
+//     addConcern:concern-style1,
+//     cancelConcern:concern-style2,
+//     tickConcern:concern-style2,
+//     eachConcern:concern-style2
+//   );
+//   @each $name, $value in $concern-type {
+//     .#{$name}{
+//       @extend %#{$value};
+//       span:before{
+//         content: "";
+//         display:inline-block;
+//         margin:.1rem 0.04rem 0 0;
+//         width: .115rem;
+//         height: .115rem;
+//         @include font((vl:top));
+//         @include daynight(background-image,image,#{$name});
+//         @include background((sz:cover));
+//        }
+
+//     }
+//   }
+
+// $concern-type: (//defaultType-style
+// 	  addConcern: concern-style1,
+// 	  cancelConcern:concern-style2,
+// 	  tickConcern:concern-style2,
+// 	  eachConcern:concern-style2
+// 	);
+// 	%concern-style1{ // +
+// 		@include daynight(color,gray,g1);
+//      	@include daynight(background-color,blue,b1);
+// 	}
+// 	%concern-style2{// !+
+// 		@include daynight(color,blue,b1);
+// 	    @include daynight(border-color,gray,g3);
+// 	    @include daynight(background-color,gray,g6);
+// 	    @include border();
+// 	}
+// 	@each $name, $value in $concern-type {
+// 		.#{$name}{
+// 			@extend %#{$value};
+// 			// @include daynight(color,gray,g1);
+// 	  //    	@include daynight(background-color,blue,b1);
+// 	     	// @include daynight(background-image,image,addConcern);
+// 			span:before{
+// 	    	    content: "";
+// 	    	    display:inline-block;
+// 				margin:.1rem 0.04rem 0 0;
+// 				width: .115rem;
+// 				height: .115rem;
+//    				@include font((vl:top));
+// 				@include daynight(background-image,image,#{$name});
+// 				@include background((sz:cover));
+// 	    	}
+
+// 		}
+// 	}
+// @for $i from 1 through 10 {
+//     .border-#{$i} { //缩进常常会报错
+//             width:$i;
+//     }
+// }
+// @for $i from 1 through 3 {
+//     .border-#{$i} {
+//         width:$i;
+//     }
+// }
+// .a{
+//     width:percentage(1);
+// }
+.common{
+    width:100px;
+}

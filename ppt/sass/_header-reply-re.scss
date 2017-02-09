@@ -1,0 +1,28 @@
+//@import "_common";
+/* header-reply-re组件 */
+.reply{
+	.level{
+		img{
+			//width:.36rem;//reply区的头像宽度
+		}
+	}
+	.reply-re-content{
+		header{
+			margin-bottom: 0.03rem;
+			.avatar{
+				div{
+					&:first-child{
+						@include font((fz:.17));
+		    			@include daynight(color,blue,b2);
+		    			@extend %txtHide;
+		    			max-width:2.2rem;
+					}
+					&:last-child{
+						@include font((fz:.14));
+		    			@include daynight(color,gray,g5);
+					}
+				}
+			}
+		}
+}
+}

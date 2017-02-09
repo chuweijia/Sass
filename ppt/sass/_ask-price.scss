@@ -1,0 +1,63 @@
+/* 询底价组件 */
+//@import "_flex";
+//@import "_common";
+.consult-price{
+      margin: .15rem 0;
+      @extend %flex-between;
+      .left{
+          flex: 1;
+          width:2.53rem;
+          height: .58rem;
+          border: 1px solid;
+          border-right: none;
+          @include daynight(border-color,gray,g3);
+          .img-wrap{
+              float: left;
+              margin: 0.04rem 0.05rem;
+              img{
+                  float: left;
+                  width: .67rem;
+                  height: .5rem;
+              }
+          }
+          .text-info{
+              float: left;
+              margin: 0;
+              padding-top: 0.098rem;
+              .name{
+                  display: block;
+                  max-width: 1.5rem;//重新计算
+                  padding-bottom:0.07rem;
+                  @include font((fz:.17,lh:.17));
+                  @include daynight(color,blue,b2);
+                  @extend %txtHide;
+              }
+              .price{
+                  display:block;
+                  @include font((fz:.15,lh:.15));
+                  &.orange{
+                      @include daynight(color,red,r2);
+                  }
+                  &.gray{
+                      @include daynight(color,gray,g7);
+                  }
+              }
+          }
+      }
+      .right{
+          .btn{
+            display: block;
+            width: .92rem;
+            height: .6rem;
+            @include font((fz:.17,lh:.6,tx:center));
+            &.use{
+                @include daynight(background-color,blue,b1);
+                @include daynight(color,gray,g1);
+            }
+            &.unuse{
+                @include daynight(background-color,gray,g7);
+                @include daynight(color,gray,g1);
+            }
+          }
+      }
+}

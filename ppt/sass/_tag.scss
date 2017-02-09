@@ -1,0 +1,19 @@
+/* tag组件 */
+//@import "_common";
+%tag{
+    display: inline-block;
+    height: .17rem;
+    padding: 0.01rem 0.04rem;
+    padding-top: 0;
+    margin-right:0.05rem;//两个并列tag存在时
+    @include font((fz:.12,lh:.16,tx:center));
+    border: 1px solid;
+    border-radius: 0.07rem;
+    letter-spacing: 0.01rem;
+    text-indent: 0.01rem;
+    span{
+        display: inline-block;
+        vertical-align: baseline;
+        margin-top: 0.015rem;
+    }
+}

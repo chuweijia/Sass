@@ -1,0 +1,28 @@
+/* 文章内容 */
+.article-content{
+  padding: 0 .15rem;
+  @include fontStyle(.17rem,.28rem);
+  .red{color: #ff5f7d;}
+  img{
+    display: block;
+    width: 100%;
+    margin: .14rem 0;
+    vertical-align: top;}
+  p span{
+    display: block;
+    margin: -.14rem 0 .14rem;
+    padding: .15rem;
+    @include fontStyle(.15rem,.2rem,#fff);
+    background: #000;}
+  .video{
+    position: relative;
+    .show{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include wh(ptr(148));
+      @include transform(-50%,-50%);
+      background: url("../images/show.png") no-repeat;
+      -webkit-background-size: ptr(148);
+      background-size: ptr(148);}}
+}

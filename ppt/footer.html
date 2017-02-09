@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="day fontSmall imgBig">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>footer</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/myFooter.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script>
+
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+<div class="content" style="margin-top:50%;">
+    
+
+
+    <section class="reply">
+        <ul>
+        <li>  
+            <footer class="like-operate clearfix">
+                <a href="javascript:" class="like"><i>+1</i><span>0</span></a>
+                <a href="javascript:" class="enter"></a>
+            </footer>
+        </li>
+        <li>
+            <footer class="master-operate testStart">
+                <div class="option">
+                    <a href="javascript:;" class="btn-reply">回复本楼</a>
+                    <span class="line-col"></span>
+                    <a href="javascript:;" class="btn-more" id="more">更多</a>
+                    <div class="more-parent hideMore">
+                        <div class="more-content">
+                            <p>
+                                <a href="javascript:" class="btn-grade scoreded">已评分
+                                </a><span class="more-line"></span>
+                                <a href="javascript:" class="btn-report">举报</a>
+                            </p>
+                        </div><div class="more-san"></div>
+                    </div>
+                </div>
+            </footer>
+            <footer class="master-operate testEnd">
+                <div class="option">
+                    <a href="javascript:;" class="btn-reply">回复本楼</a>
+                    <span class="line-col"></span>
+                    <a href="javascript:;" class="btn-more" id="more">更多</a>
+                    <div class="more-parent hideMore">
+                        <div class="more-content">
+                            <p>
+                                <a href="javascript:" class="btn-grade scoreded">已评分
+                                </a><span class="more-line"></span>
+                                <a href="javascript:" class="btn-report">举报</a>
+                            </p>
+                        </div><div class="more-san"></div>
+                    </div>
+                </div>
+            </footer>
+
+        </li>
+        </ul>
+    </section>
+
+</div>
+<script type="text/javascript">
+    $('#more').on('click', function () {
+            console.log(1);
+            console.log($('.more-parent').hasClass('showMore'));
+            $('.more-parent').hasClass('showMore') ? $('.more-parent').removeClass('showMore').addClass('hideMore') : $('.more-parent').removeClass('hideMore').addClass('showMore');
+        })
+</script>
+</body>
+
+</html>

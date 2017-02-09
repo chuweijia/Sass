@@ -1,0 +1,22 @@
+/* post-header组件 */
+@import "_header-avatar";//头像
+@import "_header-master-title";//标题
+@import "_header-master-check";//看回
+
+
+@import "_header-reply-re";
+
+.master-msg{
+	//@include border(bottom);
+	@include daynight(color,gray,g3);
+	.avatar{
+	    @include border(bottom);
+	    @include daynight(border-color,gray,g3);
+	    padding: .15rem 0;
+	    margin-bottom: .15rem;
+	}
+	.check{
+		margin-top: 0.08rem;
+	}
+}
+

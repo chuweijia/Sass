@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="day fontSmall imgBig">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>content</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/myContent.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script>
+
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+
+<body>
+<div class="content">
+<!-- 	<section class="master">
+		<header>
+	        <div class="avatar">
+	            <div class="avatar-photo">
+	                <a class="level" data-level="v2">
+	                	<img class="tx" src="images/chu.png" alt=""><i class="icon">V5</i> 
+	                </a>
+	                <div class="avatar-name">
+	                    <a class="master-name"><span class="txt">主治医生</span></a>
+	                    <p class="master-time">42分钟前</p>
+	                </div>
+	            </div>
+	            <a href="#" class="avatar-concern  addConcern">
+	                <span>关注</span>
+	            </a>
+	        </div>
+	    </header>
+	</section>
+
+
+    <section class="reply">
+        <ul>
+        <li>
+            <header>
+                <div class="avatar  ">
+                    <div class="avatar-photo  ">
+                        <a class="level">
+                            <img class="tx" src="images/chu.png" alt="">
+                        </a>
+                        <div class="avatar-name">
+                            <a class="master-name"><span class="txt">主治医生名字超长省略显示省略省略</span></a>
+	                    <p class="master-time">2分钟前</p>
+                        </div>
+                    </div>
+                    <div class="avatar-floor">
+                        <span>6</span> 楼
+                    </div>
+                </div>
+            </header>
+            <div class="reply-content">
+            	<div class="reply-userContent">
+                    回复的位置,文字大小可切换
+                </div>
+                <div class="reply-re-content">
+                    <header>
+                        <div class="avatar">
+                            <div>主治医生</div>
+                            <div>
+                                <span>4</span> 楼
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <div>
+                        楼中楼的位置,文字大小不可切换楼中楼的位置,文字大小不可切换楼中楼的位置,文字大小不可切换楼中楼的位置,文字大小不可切换楼中楼的位置,文字大小不可切换楼中楼的位置,文字大小不可切换<br>
+                        <img src="images/chu.png" class="inimg">
+                        <em>
+                            <span class="special">图注,文字大小不可切换,且小图模式下隐藏</span>
+                        </em>
+                    </div>
+                </div>
+                <div class="reply-time">
+                    <div><span>那个谁谁儿那个谁...</span>于</div>
+                    <div><span>2016-6-5 20:55</span>编辑</div>
+                </div>
+            </div>
+            <footer class="master-operate">
+                <div class="option">
+                    <a href="javascript:;" class="btn-reply">回复本楼</a>
+                    <span class="line-col"></span>
+                    <a href="javascript:;" class="btn-more">更多</a>
+                    <div class="more-parent hideMore">
+                        <div class="more-content">
+                            <p>
+                                <a href="javascript:" class="btn-grade">评分
+                                </a><span class="more-line"></span>
+                                <a href="javascript:" class="btn-report">举报</a>
+                            </p>
+                        </div><div class="more-san"></div>
+                    </div>
+                </div>
+            </footer>
+            <footer class="like-operate clearfix">
+                <a href="javascript:" class="like"><i>+1</i><span>0</span></a>
+                <a href="javascript:" class="enter"></a>
+            </footer>
+        </li>
+        </ul>
+    </section> -->
+    <!-- <section class="reload"><div><a href="javascript:"></a><p>加载失败了,点击重试</p></div></section> -->
+    <section class="authorityNote"><div><a></a><p>无权限访问</p></div></section>
+
+</div>
+	<script type="text/javascript">
+		$('.avatar-concern').on('click',function(){
+			if($(this).hasClass('addConcern')){
+				$(this).removeClass('addConcern').addClass('cancelConcern');
+				$($(this).find('span')[0]).text('已关注');
+			}else{
+				$(this).removeClass('cancelConcern').addClass('addConcern');
+				$($(this).find('span')[0]).text('关注');
+			}	
+		});
+
+	</script>
+</body>
+
+</html>
